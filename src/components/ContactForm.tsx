@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react';
+import { useState, useEffect, type FormEvent } from 'react';
 import './ContactForm.css';
 import CustomSelect from './CustomSelect';
 
@@ -104,9 +104,18 @@ const ContactForm: React.FC = () => {
           message: ''
         });
         setIsSubmitted(false);
-      }, 7000);
+      }, 4000);
     }
   };
+
+  useEffect(() => {
+    if (isSubmitted) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => { document.body.style.overflow = prev; };
+    }
+    return;
+  }, [isSubmitted]);
 
   return (
     <section id="contact" className="contact-section">
@@ -116,12 +125,6 @@ const ContactForm: React.FC = () => {
 
         <div className="contact-content">
           <form className="contact-form" onSubmit={handleSubmit}>
-            {isSubmitted && (
-              <div className="success-message">
-                ✓ Mesajul tău a fost trimis cu succes! Te vom contacta în curând.
-              </div>
-            )}
-
             <div className="form-group">
               <label htmlFor="name">Nume complet *</label>
               <input
@@ -200,6 +203,15 @@ const ContactForm: React.FC = () => {
             </button>
           </form>
         </div>
+        {isSubmitted && (
+          <div className="success-overlay" role="dialog" aria-modal="true">
+            <div className="success-overlay-box">
+              <div className="success-overlay-check">✓</div>
+              <h3>Mesajul tău a fost trimis cu succes!</h3>
+              <p>Te vom contacta în curând.</p>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
