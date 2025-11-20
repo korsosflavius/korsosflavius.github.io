@@ -55,6 +55,7 @@
   justify-content: center;
   z-index: 2000;
   padding: 1rem;
+  overflow: hidden;
 }
 
 .help-content {
@@ -62,10 +63,11 @@ background: var(--card-bg);
   border-radius: 15px;
   padding: 0;
   max-width: 400px;
-  width: 70%;
+  width: 100%;
   min-height: 100%;
   position: relative;
   transition: all 0.3s ease;
+  overflow: hidden;
 }
 
 .help-content-inner {
@@ -189,8 +191,8 @@ background: var(--card-bg);
   }
 
   .help-button svg {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
   }
 
   .help-content {

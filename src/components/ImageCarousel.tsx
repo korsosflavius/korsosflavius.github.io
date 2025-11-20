@@ -65,27 +65,24 @@ const ImageCarousel: React.FC = () => {
     setCurrentIndex(index);
   };
 
-  // Auto-play functionality
   useEffect(() => {
     if (!isAutoPlaying) return;
 
-
     const interval = setInterval(() => {
       goToNext();
-    }, 7000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [currentIndex, isAutoPlaying]);
 
-  // Keyboard navigation
   useEffect(() => {
     const handleKeyboard = (e: KeyboardEvent) => {
       if (e.key === 'ArrowLeft') {
         goToPrevious();
-        setIsAutoPlaying(false);
+        setIsAutoPlaying(true);
       } else if (e.key === 'ArrowRight') {
         goToNext();
-        setIsAutoPlaying(false);
+        setIsAutoPlaying(true);
       }
     };
 
@@ -105,7 +102,6 @@ const ImageCarousel: React.FC = () => {
         <p className="section-subtitle">Descoperă frumusețea Brașovului</p>
         
         <div className="carousel-container">
-          {/* Carousel slides */}
           <div className="carousel-slides">
             {images.map((image, index) => (
               <div
@@ -121,7 +117,6 @@ const ImageCarousel: React.FC = () => {
             ))}
           </div>
 
-          {/* Navigation arrows */}
           <button 
             className="carousel-arrow carousel-arrow-left" 
             onClick={() => handleManualNavigation(goToPrevious)}
@@ -137,7 +132,6 @@ const ImageCarousel: React.FC = () => {
             <span>›</span>
           </button>
 
-          {/* Indicator dots */}
           <div className="carousel-indicators">
             {images.map((_, index) => (
               <button
