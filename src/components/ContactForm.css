@@ -200,7 +200,7 @@
 
 .submit-button {
   width: 100%;
-  background: linear-gradient(135deg, #1f497d 0%, #a8b8c8 100%);
+  background: #1f497d;
   color: white;
   border: none;
   padding: 1rem 2rem;
@@ -212,7 +212,7 @@
 }
 
 .dark-mode .submit-button {
-  background: linear-gradient(135deg, #0d2847 0%, #5a6a7a 100%);
+  background: #0d2847;
 }
 
 .submit-button:hover {

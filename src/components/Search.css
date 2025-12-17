@@ -220,7 +220,7 @@
 }
 
 .result-category {
-  background: linear-gradient(135deg, #1f497d 0%, #a8b8c8 100%);
+  background: #1f497d;
   color: white;
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
@@ -230,7 +230,7 @@
 }
 
 .dark-mode .result-category {
-  background: linear-gradient(135deg, #0d2847 0%, #5a6a7a 100%);
+  background: #0d2847;
 }
 
 .result-content p {

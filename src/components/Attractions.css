@@ -49,7 +49,7 @@
 
 .attraction-category {
   display: inline-block;
-  background: linear-gradient(135deg, #1f497d 0%, #a8b8c8 100%);
+  background: #1f497d;
   color: white;
   padding: 0.3rem 1rem;
   border-radius: 20px;
@@ -59,7 +59,7 @@
 }
 
 .dark-mode .attraction-category {
-  background: linear-gradient(135deg, #0d2847 0%, #5a6a7a 100%);
+  background: #0d2847;
 }
 
 .attraction-name {
@@ -82,7 +82,7 @@
 }
 
 .attraction-details-btn {
-  background: linear-gradient(135deg, #1f497d 0%, #a8b8c8 100%);
+  background: #1f497d;
   color: white;
   border: none;
   padding: 0.6rem 1.5rem;
@@ -94,7 +94,7 @@
 }
 
 .dark-mode .attraction-details-btn {
-  background: linear-gradient(135deg, #0d2847 0%, #5a6a7a 100%);
+  background: #0d2847;
 }
 
 .attraction-details-btn:hover {
@@ -121,7 +121,7 @@
   padding: 0;
   max-width: 700px;
   width: 100%;
-  max-height: 80vh;
+  max-height: 90vh;
   position: relative;
   transition: all 0.3s ease;
   overflow: hidden;
@@ -133,7 +133,7 @@
 
 .attraction-modal-inner {
   padding: 2.5rem;
-  max-height: 80vh;
+  max-height: 90vh;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -210,7 +210,7 @@
 
 .attraction-modal-category {
   display: inline-block;
-  background: linear-gradient(135deg, #1f497d 0%, #a8b8c8 100%);
+  background: #1f497d;
   color: white;
   padding: 0.4rem 1rem;
   border-radius: 20px;
@@ -219,7 +219,7 @@
 }
 
 .dark-mode .attraction-modal-category {
-  background: linear-gradient(135deg, #0d2847 0%, #5a6a7a 100%);
+  background: #0d2847;
 }
 
 .attraction-modal-content::-webkit-scrollbar {
@@ -331,19 +331,14 @@
   }
 
   .attraction-modal-content {
-    max-height: 95vh;
+    max-height: 90vh;
   }
 
-  .attraction-modal-header {
-    flex-direction: column;
-    text-align: center;
+  .attraction-modal-inner {
+    padding: 2.5rem;
   }
 
   .attraction-modal-title {
-    font-size: 1.5rem;
-  }
-
-  .attraction-modal-body {
-    padding: 1.5rem;
+    font-size: 1.75rem;
   }
 }

@@ -59,19 +59,19 @@
 }
 
 .help-content {
-background: var(--card-bg);
+  background: var(--card-bg);
   border-radius: 15px;
   padding: 0;
-  max-width: 400px;
+  max-width: 700px;
   width: 100%;
-  min-height: 100%;
+  max-height: 90vh;
   position: relative;
   transition: all 0.3s ease;
   overflow: hidden;
 }
 
 .help-content-inner {
-  padding: 2rem;
+  padding: 2.5rem;
   max-height: 90vh;
   overflow-y: auto;
   overflow-x: hidden;
@@ -195,12 +195,19 @@ background: var(--card-bg);
     height: 32px;
   }
 
+  .help-modal {
+    padding: 1rem;
+  }
+
   .help-content {
-    padding: 1.5rem;
-    max-height: 70vh;
+    max-height: 90vh;
+  }
+
+  .help-content-inner {
+    padding: 2.5rem;
   }
 
   .help-content h3 {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
 }

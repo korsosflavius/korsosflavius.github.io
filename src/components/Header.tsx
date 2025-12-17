@@ -8,6 +8,12 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ onThemeToggle, isDarkMode }) => {
   const [activeSection, setActiveSection] = useState('home');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,47 +36,40 @@ const Header: React.FC<HeaderProps> = ({ onThemeToggle, isDarkMode }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const navLinks = [
+    { id: 'home', name: 'Acasă', href: '#home' },
+    { id: 'carousel', name: 'Galerie', href: '#carousel' },
+    { id: 'attractions', name: 'Atracții', href: '#attractions' },
+    { id: 'restaurants', name: 'Restaurante', href: '#restaurants' },
+    { id: 'info-table', name: 'Informații', href: '#info-table' },
+    { id: 'contact', name: 'Contact', href: '#contact' }
+  ];
+
   return (
-    <header className="header">
+    <header className={`header ${isVisible ? 'header-visible' : ''}`}>
       <div className="header-content">
-        <h1 className="logo"><span className="logo-bold">Brașov</span> <span className="logo-light">CityGuide</span></h1>
-        <nav className="nav">
-          <a 
-            href="#home" 
-            className={activeSection === 'home' ? 'active' : ''}
-          >
-            Acasă
-          </a>
-          <a 
-            href="#carousel" 
-            className={activeSection === 'carousel' ? 'active' : ''}
-          >
-            Galerie
-          </a>
-          <a 
-            href="#attractions" 
-            className={activeSection === 'attractions' ? 'active' : ''}
-          >
-            Atracții
-          </a>
-          <a 
-            href="#restaurants" 
-            className={activeSection === 'restaurants' ? 'active' : ''}
-          >
-            Restaurante
-          </a>
-          <a 
-            href="#info-table" 
-            className={activeSection === 'info-table' ? 'active' : ''}
-          >
-            Informații
-          </a>
-          <a 
-            href="#contact" 
-            className={activeSection === 'contact' ? 'active' : ''}
-          >
-            Contact
-          </a>
+        <h1 className="logo">
+          <span className="logo-bold">Brașov</span> <span className="logo-light">CityGuide</span>
+        </h1>
+
+        <nav className="nav desktop-nav">
+          {navLinks.map((link) => (
+            <a
+              key={link.id}
+              href={link.href}
+              className={`nav-link ${activeSection === link.id ? 'active' : ''}`}
+            >
+              {link.name}
+              <span className="nav-underline" />
+            </a>
+          ))}
+        </nav>
+
+        <div className="nav-actions">
           <button 
             className="search-icon-button" 
             onClick={() => window.dispatchEvent(new CustomEvent('openSearch'))}
@@ -104,7 +103,33 @@ const Header: React.FC<HeaderProps> = ({ onThemeToggle, isDarkMode }) => {
               </svg>
             )}
           </button>
-        </nav>
+          <button 
+            className="mobile-menu-button"
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            <div className="hamburger">
+              <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`} />
+              <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`} />
+              <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`} />
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <div className={`mobile-nav ${isMenuOpen ? 'open' : ''}`}>
+        <div className="mobile-nav-content">
+          {navLinks.map((link) => (
+            <a
+              key={link.id}
+              href={link.href}
+              className={`mobile-nav-link ${activeSection === link.id ? 'active' : ''}`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {link.name}
+            </a>
+          ))}
+        </div>
       </div>
     </header>
   );
